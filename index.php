@@ -56,16 +56,17 @@ $app->post('/', function ($request, $response)
 						$outputMessage = $inputSplit[0]($inputSplit[1]);
 
 						// $outputMessage = new TextMessageBuilder("ini angka $inputSplit[0] dan $inputSplit[1] dan $inputSplit[2] ");
-						
+
 					} else {
 						$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
 					}
 
 					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				} else {
+					$outputMessage = new TextMessageBuilder("ketik '/' untuk berkomunikasi dengan sahabat ubk14. Contoh '/calculate 90*5");
 				}
 
-				// $outputMessage = new TextMessageBuilder($inputMessage);
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
