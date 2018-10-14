@@ -49,11 +49,12 @@ $app->post('/', function ($request, $response)
 
 				if ($inputMessage[0] == '/') {
 
-					$inputMessage = ltrim($inputMessage,'/');
+					$inputMessage = ltrim( $inputMessage, '/');
 					$inputSplit = explode(' ', $inputMessage, 2);
 
 					if (function_exists($inputSplit[0])) {
-						$outputMessage = $inputSplit[0]($inputSplit[1]);
+						$outputMessage = new TextMessageBuilder($inputSplit[0]+$inputSplit[1]+$inputSplit[2]);
+						// $outputMessage = $inputSplit[0]($inputSplit[1]);
 					} else {
 						$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
 					}
