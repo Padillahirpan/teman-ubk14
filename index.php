@@ -53,7 +53,7 @@ $app->post('/', function ($request, $response)
 					$inputSplit = explode(' ', $inputMessage, 2);
 
 					// if (function_exists($inputSplit[0])) {
-						$outputMessage = new TextMessageBuilder("ini angka"$inputSplit[0]"dan dia"$inputSplit[1]);
+						$outputMessage = new TextMessageBuilder("ini angka $inputSplit[0] dan $inputSplit[1] dan $inputSplit[2] ");
 						// $outputMessage = $inputSplit[0]($inputSplit[1]);
 					// } else {
 					// 	$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
