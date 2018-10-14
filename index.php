@@ -53,10 +53,9 @@ $app->post('/', function ($request, $response)
 					$inputSplit = explode(' ', $inputMessage, 2);
 
 					if (function_exists($inputSplit[0])) {
-						# code...
-						$outputMessage = $inputSplit[0]($inputSplit[0]);
+						$outputMessage = $inputSplit[0]($inputSplit[1]);
 					} else {
-						$outputMessage = new TextMessageBuilder("Teu ngarti");
+						$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
 					}
 
 					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
