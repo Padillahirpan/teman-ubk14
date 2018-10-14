@@ -64,8 +64,11 @@ $app->post('/', function ($request, $response)
 					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 				} else {
-					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 					$outputMessage = new TextMessageBuilder("ketik '/' untuk berkomunikasi dengan sahabat ubk14. Contoh '/calculate 90*5");
+					
+					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+
 				}
 
 				
