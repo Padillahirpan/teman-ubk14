@@ -52,12 +52,14 @@ $app->post('/', function ($request, $response)
 					$inputMessage = ltrim( $inputMessage, '/');
 					$inputSplit = explode(' ', $inputMessage, 2);
 
-					// if (function_exists($inputSplit[0])) {
-						$outputMessage = new TextMessageBuilder("ini angka $inputSplit[0] dan $inputSplit[1] dan $inputSplit[2] ");
-						// $outputMessage = $inputSplit[0]($inputSplit[1]);
-					// } else {
-					// 	$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
-					// }
+					if (function_exists($inputSplit[0])) {
+						$outputMessage = $inputSplit[0]($inputSplit[1]);
+
+						// $outputMessage = new TextMessageBuilder("ini angka $inputSplit[0] dan $inputSplit[1] dan $inputSplit[2] ");
+						
+					} else {
+						$outputMessage = new TextMessageBuilder("Saya tidak mengerti!");
+					}
 
 					$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
